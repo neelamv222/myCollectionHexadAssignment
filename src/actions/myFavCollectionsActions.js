@@ -1,16 +1,15 @@
-import getReactRepos from "../service/getReactRepos"
+import myFavCollectionsService from "../service/myFavCollectionsService"
 import { COLLECTION_LIST, TOGGLE_BTN_CLICKED, STAR_CLICK, SET_RANDOM_TIME } from "../constants";
 
 export const getCollectionData = (item) => async (dispatch) => {
     try {
-        debugger;
-        const response = await getReactRepos(item);
+        const response = await myFavCollectionsService(item);
         dispatch({
             type: COLLECTION_LIST,
             payload: response.data
         })
     } catch (error) {
-        console.error('getReactRepos Error:', error);
+        console.error('Service Error:', error);
     }
 };
 

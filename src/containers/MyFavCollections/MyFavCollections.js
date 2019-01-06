@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { array, string, object, bool } from "prop-types";
 import { find, random } from "lodash";
+
 import { getCollectionData, handleToggleBtnClick, starClickAction, setRandomTime } from "../../actions/myFavCollectionsActions";
 import Collections from "../../components/CollectionList/Collections/Collections";
 import RandomRatingBtn from "../../components/RandomRatingBtn/RandomRatingBtn"
-import { STOP_RANDOM_RATING } from "../../constants";
-import ReactInterval from "react-interval";
-
-const favCollection = ["books", "movies", "games", "foods"];
+import RandomTimerGenerator from "../../components/RandomTimerGenerator/RandomTimerGenerator";
+import { FAV_COLLECTION } from "../../constants";
 
 class CollectionList extends Component {
 
@@ -17,7 +17,7 @@ class CollectionList extends Component {
      */
     componentDidMount() {
         const pathname = this.props.location.pathname.replace("/", "");
-        const item = find(favCollection, (o) => o === pathname);
+        const item = find(FAV_COLLECTION, (o) => o === pathname);
         this.props.getCollectionData(item);
     }
 
@@ -32,9 +32,7 @@ class CollectionList extends Component {
      */
     generateTimer = () => {
         const randomRating = random(1, 5);
-        console.log('randomRating', randomRating);
         const randomElement = random(1, 10);
-        console.log('randomElement', randomElement);
         this.props.starClickAction(randomRating, randomElement);
     };
 
@@ -43,7 +41,7 @@ class CollectionList extends Component {
         this.props.starClickAction(nextValue, name);
     };
 
-    renderCollectionData = () => {
+    renderCollectionDataSection = () => {
         return (this.props.visible ?
             <Collections data={this.props.data} onStarClick={this.onStarClick} /> :
             <h3 className="loading">Loading...</h3>);
@@ -52,29 +50,38 @@ class CollectionList extends Component {
     render() {
         const { text, randomData, data } = this.props;
         const { randomRating, randomItem, randomTime } = randomData || {};
-        const randomItemName = find(data, (el) => Number(el.id) === randomItem);
-        console.log('randomTime', randomTime);
+        const randomItemName = find(data, (el) => el.id === randomItem);
         return (
             <div className="container">
 
-                {/* Render the collection data*/}
-                {this.renderCollectionData()}
+                {/* Render my fav collection data */}
+                {this.renderCollectionDataSection()}
 
                 {/* When enabled, set the interval and call the callback when the time reach */}
-                <ReactInterval timeout={randomTime * 1000} enabled={text === STOP_RANDOM_RATING}
-                    callback={this.generateTimer} />
-                {
-                    text === STOP_RANDOM_RATING && (<p>The random rating <b>{randomRating}</b> is assigned to the random item
-                        <b> {randomItemName ? randomItemName.name : ""}</b> after <b>{randomTime || "-"}</b> secs.
-                    </p>)
-                }
+                <RandomTimerGenerator
+                    randomTime={randomTime}
+                    randomRating={randomRating}
+                    randomItemName={randomItemName}
+                    text={text}
+                    generateTimer={this.generateTimer}
+                />
 
-                {/* Render random rating button */}
-                <RandomRatingBtn onRandomRatingBtnClick={this.onRandomRatingBtnClick} toggleBtnText={text} />
+                {/* Render random rating button section */}
+                <RandomRatingBtn
+                    onRandomRatingBtnClick={this.onRandomRatingBtnClick}
+                    toggleBtnText={text}
+                />
             </div>
         );
     }
 }
+
+CollectionList.propTypes = {
+    visible: bool,
+    data: array,
+    text: string,
+    randomData: object
+};
 
 function mapStatetoProps(state) {
     return {

@@ -35,18 +35,18 @@ export default function (state = initialState, action) {
                 {
                     randomData: {
                         ...state.randomData,
-                        randomItem: id,
+                        randomItem: id.toString(),
                         randomRating: value
                     }
                 });
 
         case TOGGLE_BTN_CLICKED:
-            if(state.text === START_RANDOM_RATING) {
+            if (state.text === START_RANDOM_RATING) {
                 return Object.assign({}, state, {
                     text: STOP_RANDOM_RATING,
                     randomData: {
                         ...state.randomData,
-                        randomTime: random(1,5)
+                        randomTime: random(1, 5)
                     }
                 })
             };
@@ -59,7 +59,7 @@ export default function (state = initialState, action) {
             return Object.assign({}, state, {
                 randomData: {
                     ...state.randomData,
-                    randomTime: random(1,5)
+                    randomTime: random(1, 5)
                 }
             });
         default:

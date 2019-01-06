@@ -1,11 +1,15 @@
 import React from "react";
+import { func, string } from "prop-types";
 
-import "./RandomRatingBtn.css"
-
-const RandomRatingBtn = (props) => {
+const RandomRatingBtn = ({toggleBtnText, onRandomRatingBtnClick}) => {
     return (
-        <button type="button" className="btn btn-primary btn-lg toggle-btn" onClick={() => props.onRandomRatingBtnClick()}>{props.toggleBtnText}</button>
+        <button type="button" className="btn btn-primary btn-lg toggle-btn" onClick={() => onRandomRatingBtnClick()}>{toggleBtnText}</button>
     )
 }
+
+RandomRatingBtn.propTypes = {
+    toggleBtnText: string,
+    onRandomRatingBtnClick: func
+};
 
 export default RandomRatingBtn;
