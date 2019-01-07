@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import MyFavCollections from "./containers/MyFavCollections/MyFavCollections";
+import MyFavCollections from "./containers/my-fav-collections";
 
-import Menu from "./components/Menu/Menu";
+import Menu from "./components/menu";
 import "./App.css"
 
 const App = () => {
@@ -11,7 +11,7 @@ const App = () => {
       <div className="my-fav-collection">
         <div className="links">
 
-        {/* The application header */}
+          {/* The application header */}
           <Menu />
         </div>
 

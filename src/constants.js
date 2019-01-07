@@ -3,7 +3,11 @@ export const STOP_RANDOM_RATING = "Stop Random Rating";
 export const COLLECTION_LIST = "COLLECTION_LIST";
 export const TOGGLE_BTN_CLICKED = "TOGGLE_BTN_CLICKED";
 export const STAR_CLICK = "STAR_CLICK";
-export const SET_RANDOM_TIME = "SET_RANDOM_TIME";
+export const API_ERROR = "API_ERROR";
+export const TOTAL_STAR_COUNT = 5;
+export const RANDOM_MIN_VAL = 1;
+export const RANDOM_MAX_VAL = 5;
+export const RANDOM_MAX_VAL_ID = 10;
 export const FAV_COLLECTION = ["books", "movies", "games", "foods"];
 export const MENU_ITEMS = [
     {
