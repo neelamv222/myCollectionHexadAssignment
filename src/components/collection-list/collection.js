@@ -1,12 +1,15 @@
 import React from "react";
 import { func, object } from "prop-types";
+import classNames from "classnames";
+
 import StarRatingComponent from 'react-star-rating-component';
 import { TOTAL_STAR_COUNT } from '../../constants';
 
-const Collection = ({ item, onStarClick }) => {
+const Collection = ({ item, onStarClick, randomItem }) => {
     const { name, rating, id } = item;
+    const activeItem = classNames('list-group-item', 'row', { 'active-link': id === randomItem});
     return (
-        <li className="list-group-item row">
+        <li className={activeItem}>
             <p className="collection-item col-4">{name}</p>
             <StarRatingComponent
                 className="col-2"

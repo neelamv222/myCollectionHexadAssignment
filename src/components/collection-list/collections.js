@@ -4,11 +4,11 @@ import { func, array } from "prop-types";
 import Collection from "./collection";
 
 
-const Collections = ({ data, onStarClick }) => {
+const Collections = ({ data, onStarClick, randomItem }) => {
 
     //It will display the list of collections.
     const displayCollectionList = () => (
-        data.map(elem => (<Collection key={elem.id} item={elem} onStarClick={onStarClick} />))
+        data.map(elem => (<Collection key={elem.id} item={elem} onStarClick={onStarClick} randomItem={randomItem} />))
     );
 
     return (

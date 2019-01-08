@@ -54,3 +54,11 @@ h2 {
 	font-size: 16px;
 	font-weight: bold;
 }
+.list-group-item.active-link {
+	background: #18afa8;
+	color: #fff;
+}
+
+.list-group-item.active-link p{
+	font-size: 16px;
+}

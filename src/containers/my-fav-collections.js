@@ -42,8 +42,18 @@ class CollectionList extends Component {
     };
 
     //check for api success or failure scenario
-    checkCollectionDataSection = () => this.props.isApiFail ? <p className="error-msg">Api Call Failed :-(</p> :
-        <Collections data={this.props.data} onStarClick={this.onStarClick} />;
+    checkCollectionDataSection = () => {
+        const { data, randomData } = this.props;
+        const { randomItem } = randomData || {};
+        return (
+            this.props.isApiFail ? <p className="error-msg">Api Call Failed :-(</p> :
+                <Collections
+                    data={data}
+                    onStarClick={this.onStarClick}
+                    randomItem={randomItem}
+                />
+        );
+    }
 
     render() {
         const { text, randomData, data } = this.props;
