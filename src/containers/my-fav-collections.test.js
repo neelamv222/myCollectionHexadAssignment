@@ -103,4 +103,5 @@ describe('Collection', () => {
         mapDispatchToProps(dispatch).handleToggleBtnClick();
         expect(dispatch.mock.calls[1][0]).toEqual({ type: 'TOGGLE_BTN_CLICKED' });
     });
+    //TODO: Likewise need to write the other test cases for this component
 });
