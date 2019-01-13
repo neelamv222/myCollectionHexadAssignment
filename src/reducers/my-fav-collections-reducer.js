@@ -42,7 +42,7 @@ export default function (state = initialState, action) {
             });
             return Object.assign({}, state, {
                 data: orderBy(updatedRepo, ['rating', 'name'], ['desc', 'asc'])
-            },
+                },
                 {
                     randomData: {
                         ...state.randomData,

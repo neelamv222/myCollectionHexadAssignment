@@ -97,7 +97,7 @@ CollectionList.propTypes = {
     isApiFail: bool
 };
 
-function mapStatetoProps(state) {
+export const mapStateToProps = (state) => {
     return {
         data: state.collections.data,
         text: state.collections.text,
@@ -106,8 +106,8 @@ function mapStatetoProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+export const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({ getCollectionData, handleToggleBtnClick, starClickAction }, dispatch);
 }
 
-export default connect(mapStatetoProps, mapDispatchToProps)(CollectionList);
+export default connect(mapStateToProps, mapDispatchToProps)(CollectionList);
