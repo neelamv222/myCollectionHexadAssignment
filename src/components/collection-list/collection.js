@@ -1,5 +1,5 @@
 import React from "react";
-import { func, object } from "prop-types";
+import { func, object, string } from "prop-types";
 import classNames from "classnames";
 
 import StarRatingComponent from 'react-star-rating-component';
@@ -24,7 +24,8 @@ const Collection = ({ item, onStarClick, randomItem }) => {
 
 Collection.propTypes = {
     item: object,
-    onStarClick: func
+    onStarClick: func,
+    randomItem: string
 };
 
 export default Collection;

@@ -1,5 +1,5 @@
 import React from "react";
-import { func, array } from "prop-types";
+import { func, array, string } from "prop-types";
 
 import Collection from "./collection";
 
@@ -20,7 +20,8 @@ const Collections = ({ data, onStarClick, randomItem }) => {
 
 Collections.propTypes = {
     data: array,
-    onStarClick: func
+    onStarClick: func,
+    randomItem: string
 };
 
 export default Collections;

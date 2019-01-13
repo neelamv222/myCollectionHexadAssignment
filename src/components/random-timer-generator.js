@@ -1,5 +1,6 @@
 import React from "react";
 import ReactInterval from "react-interval";
+import { number, string } from "prop-types";
 
 import { STOP_RANDOM_RATING } from "../constants";
 
@@ -32,5 +33,13 @@ const RandomTimerGenerator = ({ randomTime, randomItemName, text, randomRating, 
     )
 
 }
+
+RandomTimerGenerator.propTypes = {
+    randomTime: number,
+    randomItemName: string,
+    text: string,
+    randomRating: number,
+    generateTimer: number
+};
 
 export default RandomTimerGenerator;
